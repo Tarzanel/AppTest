@@ -9,25 +9,20 @@ namespace AppTest.Alive
     {
         private HttpClient _httpClient;
 
-        public AliveAppService(HttpClient httpClient)
+        public AliveAppService()
         {
-            _httpClient = httpClient;
+            _httpClient = new HttpClient();
         }
 
         public async Task<string> CallAlive()
         {
             using var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://staging.ptranz.com/api/Alive");
             
-            requestMessage.Headers.Add("Accept", "application/json");
-            requestMessage.Headers.Add("PowerTranz-PowerTranzId", "88800962");
-            requestMessage.Headers.Add("PowerTranz-PowerTranzPassword", "SDWRsJPI4fJQMJCJ74NaZyHHgTHcmpTmyuVOlNfqZoGoRTz3UfhwU5");
-            requestMessage.Headers.Add("Host", "staging.ptranz.com");
+           
 
             try
             {
-                Console.WriteLine("Astept !!!!");
-                var content = await _httpClient.SendAsync(requestMessage);
-                Console.WriteLine("Am facut request");
+                var content = await _httpClient.SendAsync(requestMessage);               
                 var result = await content.Content.ReadAsStringAsync();
                 return result;
             }

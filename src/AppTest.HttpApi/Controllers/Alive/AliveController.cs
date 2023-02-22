@@ -16,13 +16,13 @@ namespace AppTest.Controllers.Alive
     [Area("app")]
     [ControllerName("Alive")]
     [Route("api/app/alive")]
-    public class AliveController : AbpController, IAliveAppService
+    public class AliveController : AppTestController, IAliveAppService
     {
         private readonly IAliveAppService _aliveAppService;
 
-        public AliveController(IAliveAppService aliveAppService)
+        public AliveController(IAliveAppService aliveAppService): base()
         {
-            _aliveAppService = aliveAppService; 
+            _aliveAppService = aliveAppService;
         }
 
         

@@ -17,9 +17,6 @@ namespace AppTest.Alive
         public async Task<string> CallAlive()
         {
             using var requestMessage = new HttpRequestMessage(HttpMethod.Get, "https://staging.ptranz.com/api/Alive");
-            
-           
-
             try
             {
                 var content = await _httpClient.SendAsync(requestMessage);               
